@@ -9,3 +9,5 @@ spring:
     username: admin
     password: admin
     virtual-host: /
+    publisher-confirm-type: correlated
+    publisher-returns: true

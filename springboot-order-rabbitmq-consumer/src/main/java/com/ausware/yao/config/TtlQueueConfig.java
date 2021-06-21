@@ -63,7 +63,7 @@ public class TtlQueueConfig {
         arguments.put("x-dead-letter-exchange",DEAD_EXCHANGE_NAME);
         //设置死信路由key
         arguments.put("x-dead-letter-routing-key","YD");
-        return QueueBuilder.durable(QUEUE_NAME_B).withArguments(arguments).build();
+        return QueueBuilder.durable(QUEUE_NAME_C).withArguments(arguments).build();
 
     }
 
