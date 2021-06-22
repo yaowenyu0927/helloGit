@@ -22,6 +22,11 @@ public class MyCallBack implements RabbitTemplate.ConfirmCallback, RabbitTemplat
     public void init(){
         //注入
         rabbitTemplate.setConfirmCallback(this);
+        /**
+         * true：交换机无法将消息进行路由时，会将该消息返回给生产者
+         * false：如果发现消息无法进行路由，则直接丢弃
+         */
+        rabbitTemplate.setMandatory(true);
         rabbitTemplate.setReturnsCallback(this);
     }
     /**
