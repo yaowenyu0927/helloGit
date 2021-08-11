@@ -7,7 +7,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
 //表示关系类型
-@RelationshipEntity(type="UserRelation")
+@RelationshipEntity(type="Friend")
 @Data
 public class UserRelation {
 
@@ -20,6 +20,4 @@ public class UserRelation {
     @EndNode
     private UserNode endNode;
 
-
-//get,set方法省略
 }

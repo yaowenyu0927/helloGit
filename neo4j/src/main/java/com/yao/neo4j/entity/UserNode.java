@@ -22,5 +22,4 @@ public class UserNode {
     @Property
     private int age;
 
-//get,set方法省略
 }
