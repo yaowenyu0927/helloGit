@@ -1,15 +1,12 @@
 package com.ausware.yao.controller;
 
 import com.ausware.yao.config.ConfirmConfig;
-import com.ausware.yao.config.DelayQueueConfig;
-import com.ausware.yao.config.MyCallBack;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.util.Date;
 
 @Slf4j
@@ -20,9 +17,6 @@ public class Producer {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
-
-    @Autowired
-    private MyCallBack myCallBack;
 
 
     //发布确认， 发送消息

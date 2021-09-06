@@ -14,7 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -98,6 +102,26 @@ class Neo4jDemoApplicationTests {
     public void findFriendByPersonTest(){
         List<Person> friends = personRepository.findFriendByPerson("jamie");
         friends.forEach(System.out::println);
+    }
+
+
+
+    @Test
+    public void setTest(){
+        Set<Long> set = new HashSet<>();
+        set.add(1L);
+        set.add(2L);
+        set.add(3L);
+        set.add(4L);
+
+
+
+        Set<Set<Long>> set2 = new HashSet<>();
+
+        Iterator<Long> iterator = set.iterator();
+
+        List<Long> list = set.stream().collect(Collectors.toList());
+
     }
 
 }

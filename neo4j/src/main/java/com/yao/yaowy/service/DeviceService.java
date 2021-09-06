@@ -9,6 +9,7 @@ import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -61,7 +62,19 @@ public class DeviceService {
      * 查询3
      */
     public List<Map<String ,Object>> queryPort2(@Param("devices")List<Long> devices){
-        return deviceRepository.queryPort2(devices);
+
+        List<List<Long>> list = new ArrayList<>();
+        for (int i = 0; i < devices.size()-1; i++) {
+            for (int j = i+1; j < devices.size() ; j++) {
+                List<Long> arrayList = new ArrayList<>();
+                arrayList.add(devices.get(i));
+                arrayList.add(devices.get(j));
+
+                list.add(arrayList);
+            }
+
+        }
+        return deviceRepository.queryPort2(list);
     }
 
 }

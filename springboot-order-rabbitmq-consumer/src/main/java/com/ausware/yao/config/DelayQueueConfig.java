@@ -24,7 +24,7 @@ public class DelayQueueConfig {
         return QueueBuilder.durable(DELAY_QUEUE_NAME).build();
     }
 
-    //声明交换机 与基于插件
+    //声明交换机 基于插件
     @Bean()
     public CustomExchange delayExchange(){
         HashMap<String, Object> arguments = new HashMap<>();

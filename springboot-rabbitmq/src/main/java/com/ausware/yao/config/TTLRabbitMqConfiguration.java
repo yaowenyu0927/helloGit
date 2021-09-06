@@ -26,6 +26,7 @@ public class TTLRabbitMqConfiguration {
         //设置过期时间ttl
         HashMap<String, Object> args = new HashMap<>();
         args.put("x-message-ttl",10000);    //这里一定是int类型
+        //将过期消息存入死信队列
         args.put("x-dead-letter-exchange","dead_direct_exchange");
         args.put("x-dead-letter-routing-key","dead");   //fanout不需要配置
         return new Queue("ttl.direct.queue",true,false,false,args);

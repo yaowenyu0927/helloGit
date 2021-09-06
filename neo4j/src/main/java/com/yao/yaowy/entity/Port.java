@@ -5,10 +5,13 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
+import java.io.Serializable;
+
 @NodeEntity(label = "PORT")
 @Data
-public class Port {
+public class Port implements Serializable {
 
+    private static final long serialVersionUID = 4555635926444770103L;
     @Id
     @GeneratedValue
     private Long id;

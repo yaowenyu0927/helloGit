@@ -4,7 +4,7 @@ server:
 #配置rabbitmq服务
 spring:
   rabbitmq:
-    host: 192.168.3.17
+    host: 192.168.56.101
     port: 5672
     username: admin
     password: admin

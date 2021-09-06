@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author yaowy
+ */
 @Component
 public interface DeviceRepository extends Neo4jRepository<Device,Long> {
 
@@ -82,10 +85,10 @@ public interface DeviceRepository extends Neo4jRepository<Device,Long> {
      * 查询3
      */
     @Query("unwind $devices as device " +
-            "match (d:DEVICE)-[:INTERFACE]->(p:PORT)-[:LINK]->(p2:PORT)<-[:INTERFACE]-(d2:DEVICE) " +
-            "where d.deviceId=device " +
-            "return d,p,p2,d2")
-    List<Map<String ,Object>> queryPort2(@Param("devices")List<Long> devices);
+            "match p = (本端设备:DEVICE)-->(本段端口:PORT)-[:LINK]->(对端端口:PORT)<--(对端设备:DEVICE) " +
+            "where 本端设备.deviceId=device[0] and 对端设备.deviceId=device[1]" +
+            "return 本端设备,本段端口,对端端口,对端设备")
+    List<Map<String ,Object>> queryPort2(@Param("devices")List<List<Long>> devices);
 
 
 }

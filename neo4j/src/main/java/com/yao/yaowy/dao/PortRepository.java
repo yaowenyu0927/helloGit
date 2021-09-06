@@ -14,7 +14,7 @@ public interface PortRepository extends Neo4jRepository<Port,Long> {
      * 创建单个节点
      * @param port
      */
-    @Query("CREATE (p:PORT{portId:$port.portId,ifIndex:$port.ifIndex,ifName:$port.ifName,tenantId:$port.tenantId})")
+    @Query("CREATE (p:PORT{portId:$port.portId, deviceId:$port.deviceId, ifIndex:$port.ifIndex, ifName:$port.ifName, tenantId:$port.tenantId})")
     void addPort(@Param("port") Port port);
 
 
@@ -31,12 +31,12 @@ public interface PortRepository extends Neo4jRepository<Port,Long> {
     void mergeHostRelationship(@Param("portId") long portId, @Param("hostIp") String hostIp);
 
 
-    @Query("CREATE (p1:PORT{portId:$port1.portId,ifIndex:$port1.ifIndex,ifName:$port1.ifName,tenantId:$port1.tenantId})" +
+    @Query("CREATE (p1:PORT{portId:$port1.portId,deviceId:$port1.deviceId,ifIndex:$port1.ifIndex,ifName:$port1.ifName,tenantId:$port1.tenantId})" +
             "- [:LINK] ->" +
-            "(p2:PORT{portId:$port2.portId,ifIndex:$port2.ifIndex,ifName:$port2.ifName,tenantId:$port2.tenantId})")
+            "(p2:PORT{portId:$port2.portId,deviceId:$port2.deviceId,ifIndex:$port2.ifIndex,ifName:$port2.ifName,tenantId:$port2.tenantId})")
     void addPortAndPort(@Param("port1") Port port1, @Param("port2") Port port2);
 
-    @Query("CREATE (p:PORT{portId:$port.portId,ifIndex:$port.ifIndex,ifName:$port.ifName,tenantId:$port.tenantId})" +
+    @Query("CREATE (p:PORT{portId:$port.portId,deviceId:$port.deviceId,ifIndex:$port.ifIndex,ifName:$port.ifName,tenantId:$port.tenantId})" +
             "- [:LINK] ->" +
             "(h:HOST{hostIp:$host.hostIp,hostMac:$host.hostMac})")
     void addPortAndPHost(@Param("port") Port port,@Param("host") Host host);
